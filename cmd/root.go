@@ -1,12 +1,12 @@
 package cmd
 
 import (
-	"FinalProject/InformationScan/Modules"
-	"FinalProject/cmd/flag_cli"
-	"FinalProject/cmd/shell_cli"
-	"FinalProject/common"
-	"FinalProject/config"
 	"fmt"
+	"github.com/nerowander/MultiCheck/InformationScan/Modules"
+	"github.com/nerowander/MultiCheck/cmd/flag_cli"
+	"github.com/nerowander/MultiCheck/cmd/shell_cli"
+	"github.com/nerowander/MultiCheck/common"
+	"github.com/nerowander/MultiCheck/config"
 	"os"
 	"time"
 )

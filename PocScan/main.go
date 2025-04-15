@@ -1,12 +1,12 @@
 package main
 
 import (
-	"PocScan/Modules"
-	"PocScan/WebScan/lib"
-	"PocScan/common"
-	"PocScan/config"
 	"encoding/json"
 	"fmt"
+	"github.com/nerowander/MultiCheck/PocScan/Modules"
+	"github.com/nerowander/MultiCheck/WebScan/lib"
+	"github.com/nerowander/MultiCheck/common"
+	"github.com/nerowander/MultiCheck/config"
 	"net/http"
 	"strconv"
 	"sync"

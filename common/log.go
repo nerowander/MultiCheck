@@ -1,10 +1,10 @@
 package common
 
 import (
-	"FinalProject/config"
 	"encoding/json"
 	"fmt"
 	"github.com/fatih/color"
+	"github.com/nerowander/MultiCheck/config"
 	"io"
 	"log"
 	"os"

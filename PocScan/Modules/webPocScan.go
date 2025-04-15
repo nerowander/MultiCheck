@@ -1,12 +1,12 @@
 package Modules
 
 import (
-	"PocScan/WebScan/rules"
-	"PocScan/common"
-	"PocScan/config"
-	"PocScan/poclib"
 	"embed"
 	"fmt"
+	"github.com/nerowander/MultiCheck/PocScan/poclib"
+	"github.com/nerowander/MultiCheck/WebScan/rules"
+	"github.com/nerowander/MultiCheck/common"
+	"github.com/nerowander/MultiCheck/config"
 	"gopkg.in/yaml.v2"
 	"io/fs"
 	"net/http"

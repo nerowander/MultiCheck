@@ -1,9 +1,9 @@
 package Plugins
 
 import (
-	"InformationScan/common"
-	"InformationScan/config"
 	"fmt"
+	"github.com/nerowander/MultiCheck/common"
+	"github.com/nerowander/MultiCheck/config"
 	"net"
 	"strings"
 	"time"

@@ -1,9 +1,9 @@
 package WebScan
 
 import (
-	"FinalProject/WebScan/rules"
-	"FinalProject/common"
 	"fmt"
+	"github.com/nerowander/MultiCheck/WebScan/rules"
+	"github.com/nerowander/MultiCheck/common"
 	"regexp"
 )
 

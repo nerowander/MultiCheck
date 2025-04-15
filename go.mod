@@ -1,4 +1,4 @@
-module FinalProject
+module github.com/nerowander/MultiCheck
 
 go 1.23.0
 
@@ -18,7 +18,6 @@ require (
 	google.golang.org/genproto/googleapis/api v0.0.0-20250324211829-b45e905df463
 	google.golang.org/protobuf v1.36.6
 	gopkg.in/yaml.v2 v2.2.2
-	gopkg.in/yaml.v3 v3.0.1
 )
 
 require (

@@ -1,10 +1,10 @@
 package Plugins
 
 import (
-	"InformationScan/common"
-	"InformationScan/config"
 	"errors"
 	"fmt"
+	"github.com/nerowander/MultiCheck/common"
+	"github.com/nerowander/MultiCheck/config"
 	"github.com/stacktitan/smb/smb"
 	"strings"
 	"time"

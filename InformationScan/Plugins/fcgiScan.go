@@ -1,13 +1,13 @@
 package Plugins
 
 import (
-	"InformationScan/common"
-	"InformationScan/config"
 	"bufio"
 	"bytes"
 	"encoding/binary"
 	"errors"
 	"fmt"
+	"github.com/nerowander/MultiCheck/common"
+	"github.com/nerowander/MultiCheck/config"
 	"io"
 	"strconv"
 	"strings"

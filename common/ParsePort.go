@@ -1,7 +1,7 @@
 package common
 
 import (
-	"FinalProject/config"
+	"github.com/nerowander/MultiCheck/config"
 	"strconv"
 	"strings"
 )

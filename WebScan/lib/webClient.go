@@ -1,9 +1,9 @@
 package lib
 
 import (
-	"FinalProject/config"
 	"context"
 	"crypto/tls"
+	"github.com/nerowander/MultiCheck/config"
 	"net"
 	"net/http"
 	"time"

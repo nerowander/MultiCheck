@@ -1,11 +1,11 @@
 package shell_cli
 
 import (
-	"FinalProject/InformationScan/Modules"
-	"FinalProject/common"
-	"FinalProject/config"
 	"fmt"
 	"github.com/c-bata/go-prompt"
+	"github.com/nerowander/MultiCheck/InformationScan/Modules"
+	"github.com/nerowander/MultiCheck/common"
+	"github.com/nerowander/MultiCheck/config"
 	"os"
 	"strconv"
 	"strings"
@@ -57,7 +57,7 @@ var modules = map[string]map[string]string{
 		"ExpName":                config.ExpName,
 		"SaveResult":             strconv.FormatBool(config.SaveResult),
 		"OutPutFile":             config.OutPutFile,
-		"EnableContainer":        strconv.FormatBool(config.EnableContainer),
+		"EnableContainer":        strconv.FormatBool(config.EnableInfoContainer),
 		"EnablePocContainer":     strconv.FormatBool(config.EnablePocContainer),
 		"EnableExploitContainer": strconv.FormatBool(config.EnableExploitContainer),
 	},
@@ -244,7 +244,7 @@ func getArgsVariable(param string, value interface{}) (result string) {
 		"PrintLog":          handlePrintLog,
 		"SaveLogToJSON":     handleSaveLogToJSON,
 		"SaveLogToHTML":     handleSaveLogToHTML,
-		"EnableContainer":   handleEnableContainer,
+		"EnableContainer":   handleEnableInfoContainer,
 	}
 
 	// 查找处理函数

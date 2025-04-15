@@ -1,9 +1,9 @@
 package shell_cli
 
 import (
-	"FinalProject/common"
-	"FinalProject/config"
 	"fmt"
+	"github.com/nerowander/MultiCheck/common"
+	"github.com/nerowander/MultiCheck/config"
 	"reflect"
 	"strconv"
 	"strings"
@@ -886,30 +886,30 @@ func handleSaveLogToHTML(value interface{}) (result string) {
 	}
 }
 
-func handleEnableContainer(value interface{}) (result string) {
+func handleEnableInfoContainer(value interface{}) (result string) {
 	v := reflect.ValueOf(value)
 	if v.Kind() == reflect.String {
 		// 如果是字符串，尝试将其转换为 bool
 		strValue := strings.ToLower(v.String())
 		if strValue == "true" {
-			config.EnableContainer = true
+			config.EnableInfoContainer = true
 		} else if strValue == "false" {
-			config.EnableContainer = false
+			config.EnableInfoContainer = false
 		} else {
-			result = fmt.Sprintf("Invalid value for EnableContainer, expected 'true' or 'false', got: %s", strValue)
+			result = fmt.Sprintf("Invalid value for EnableInfoContainer, expected 'true' or 'false', got: %s", strValue)
 			return result
 		}
-		modules["Config"]["EnableContainer"] = strconv.FormatBool(config.EnableContainer)
+		modules["Config"]["EnableInfoContainer"] = strconv.FormatBool(config.EnableInfoContainer)
 		result = fmt.Sprintf("Set the value of SaveLogToHTML: %v", common.SaveLogToHTML)
 		return result
 	} else if v.Kind() == reflect.Bool {
 		// 如果是 bool 类型，直接赋值
-		config.EnableContainer = v.Bool()
-		modules["Config"]["EnableContainer"] = strconv.FormatBool(config.EnableContainer)
-		result = fmt.Sprintf("Set the value of EnableContainer: %v", config.EnableContainer)
+		config.EnableInfoContainer = v.Bool()
+		modules["Config"]["EnableInfoContainer"] = strconv.FormatBool(config.EnableInfoContainer)
+		result = fmt.Sprintf("Set the value of EnableInfoContainer: %v", config.EnableInfoContainer)
 		return result
 	} else {
-		result = fmt.Sprintf("Invalid value for EnableContainer, type error")
+		result = fmt.Sprintf("Invalid value for EnableInfoContainer, type error")
 		return result
 	}
 }
@@ -917,58 +917,58 @@ func handleEnableContainer(value interface{}) (result string) {
 // 提供参数描述
 func getDescription(param string) string {
 	descriptions := map[string]string{
-		"InfoScanThreads":   "The nums of InfoScan thread",
-		"ScanType":          "Choose scan type, for example: web | all | pocscan | exploit | ping | portscan",
-		"Timeout":           "Set the InfoScan timeout",
-		"Command":           "Exec command, for example: ssh",
-		"Ports":             "Port to InfoScan, for example: 80 | 80,443 | 80-443",
-		"PortsFile":         "Select port file to InfoScan",
-		"URL":               "Url to scan",
-		"URLFile":           "Choose url file to scan",
-		"AddPorts":          "Add extra ports,-pa 2333",
-		"AddUserNames":      "Add extra username,-au admin",
-		"AddPassWords":      "Add extra password,-apw admin",
-		"Hash":              "Input hash",
-		"BruteThreads":      "The nums of thread to brute",
-		"PocPath":           "Poc file path",
-		"Cookie":            "Set cookie",
-		"WebTimeout":        "Set the Webclient timeout",
-		"Username":          "Username account, for example: admin| admin,test",
-		"UsernameFile":      "Username file",
-		"Password":          "Password, for example: admin| admin,test",
-		"PasswordFile":      "Password file",
-		"HashFile":          "Hash file",
-		"PocNum":            "Poc rate",
-		"PocName":           "Choose poc name to scan, such as: sql",
-		"PocType":           "Choose poc type: base(such as sql injection scan) | software (OA CMS scan) | iot(IOT scan) | all(web+iot scan)",
-		"DnsLog":            "Enable ceye dnslog, then provide your ceye token and ceye url: set CeyeToken <ceye_token> | set CeyeURL <ceye_url>",
-		"CeyeToken":         "Ceye token",
-		"CeyeURL":           "Ceye url",
-		"FullPOC":           "Poc full scan,as: use all shiro keys to scan",
-		"FullEXP":           "Exp full scan,as: use all shiro keys to scan",
-		"ExpNum":            "Exp rate",
-		"ExpPath":           "Exp file path",
-		"ExpType":           "Choose exp type: base(such as sql injection exploit) | software (OA CMS exploit) | iot(IOT exploit) | all(web+iot exploit)",
-		"ExpName":           "Choose poc name to scan, such as: sql",
-		"SaveResult":        "Save scan result to log file: json| html | txt(default)",
-		"OutPutFile":        "Output log file name",
-		"Hosts":             "IP address to scan, for example: 192.168.0.1 | 1.2.3.4/24 | 192.168.0.1,192.168.0.2 | 1.2.3.4-255 | 1.2.3.4-1.2.3.255",
-		"HostFile":          "Select host file to scan",
-		"Brute":             "Brute password or not",
-		"FTPReadFile":       "Choose a file to read in ftp server",
-		"FTPWriteFile":      "Choose a file to write in ftp server",
-		"Domain":            "Smb | rdp domain",
-		"SkipRedis":         "Skip redis exploit",
-		"RedisSshFile":      "Redis file to write sshkey file, for example: id_rsa.pub",
-		"RedisCronHost":     "Redis shell to write cron file for example: 192.168.1.1:2333",
-		"RedisWebshellFile": "Redis file to write webshell file, for example: shell.php",
-		"RemotePath":        "Remote path of the target, for example: FastCGI filepath",
-		"SshKey":            "Sshkey file (id_rsa)",
-		"LogWaitTime":       "Logerr wait time",
-		"PrintLog":          "Print scan log",
-		"SaveLogToJSON":     "Save log to json file",
-		"SaveLogToHTML":     "Save log to html file",
-		"EnableContainer":   "Enable docker container to run scan",
+		"InfoScanThreads":     "The nums of InfoScan thread",
+		"ScanType":            "Choose scan type, for example: web | all | pocscan | exploit | ping | portscan",
+		"Timeout":             "Set the InfoScan timeout",
+		"Command":             "Exec command, for example: ssh",
+		"Ports":               "Port to InfoScan, for example: 80 | 80,443 | 80-443",
+		"PortsFile":           "Select port file to InfoScan",
+		"URL":                 "Url to scan",
+		"URLFile":             "Choose url file to scan",
+		"AddPorts":            "Add extra ports,-pa 2333",
+		"AddUserNames":        "Add extra username,-au admin",
+		"AddPassWords":        "Add extra password,-apw admin",
+		"Hash":                "Input hash",
+		"BruteThreads":        "The nums of thread to brute",
+		"PocPath":             "Poc file path",
+		"Cookie":              "Set cookie",
+		"WebTimeout":          "Set the Webclient timeout",
+		"Username":            "Username account, for example: admin| admin,test",
+		"UsernameFile":        "Username file",
+		"Password":            "Password, for example: admin| admin,test",
+		"PasswordFile":        "Password file",
+		"HashFile":            "Hash file",
+		"PocNum":              "Poc rate",
+		"PocName":             "Choose poc name to scan, such as: sql",
+		"PocType":             "Choose poc type: base(such as sql injection scan) | software (OA CMS scan) | iot(IOT scan) | all(web+iot scan)",
+		"DnsLog":              "Enable ceye dnslog, then provide your ceye token and ceye url: set CeyeToken <ceye_token> | set CeyeURL <ceye_url>",
+		"CeyeToken":           "Ceye token",
+		"CeyeURL":             "Ceye url",
+		"FullPOC":             "Poc full scan,as: use all shiro keys to scan",
+		"FullEXP":             "Exp full scan,as: use all shiro keys to scan",
+		"ExpNum":              "Exp rate",
+		"ExpPath":             "Exp file path",
+		"ExpType":             "Choose exp type: base(such as sql injection exploit) | software (OA CMS exploit) | iot(IOT exploit) | all(web+iot exploit)",
+		"ExpName":             "Choose poc name to scan, such as: sql",
+		"SaveResult":          "Save scan result to log file: json| html | txt(default)",
+		"OutPutFile":          "Output log file name",
+		"Hosts":               "IP address to scan, for example: 192.168.0.1 | 1.2.3.4/24 | 192.168.0.1,192.168.0.2 | 1.2.3.4-255 | 1.2.3.4-1.2.3.255",
+		"HostFile":            "Select host file to scan",
+		"Brute":               "Brute password or not",
+		"FTPReadFile":         "Choose a file to read in ftp server",
+		"FTPWriteFile":        "Choose a file to write in ftp server",
+		"Domain":              "Smb | rdp domain",
+		"SkipRedis":           "Skip redis exploit",
+		"RedisSshFile":        "Redis file to write sshkey file, for example: id_rsa.pub",
+		"RedisCronHost":       "Redis shell to write cron file for example: 192.168.1.1:2333",
+		"RedisWebshellFile":   "Redis file to write webshell file, for example: shell.php",
+		"RemotePath":          "Remote path of the target, for example: FastCGI filepath",
+		"SshKey":              "Sshkey file (id_rsa)",
+		"LogWaitTime":         "Logerr wait time",
+		"PrintLog":            "Print scan log",
+		"SaveLogToJSON":       "Save log to json file",
+		"SaveLogToHTML":       "Save log to html file",
+		"EnableInfoContainer": "Enable docker container to run scan",
 	}
 	return descriptions[param]
 }

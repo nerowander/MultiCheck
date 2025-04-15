@@ -1,7 +1,7 @@
 package main
 
 import (
-	"FinalProject/cmd"
+	"github.com/nerowander/MultiCheck/cmd"
 )
 
 func main() {

@@ -1,11 +1,11 @@
 package Plugins
 
 import (
-	"InformationScan/common"
-	"InformationScan/config"
 	"bytes"
 	"fmt"
 	"github.com/jlaffaye/ftp"
+	"github.com/nerowander/MultiCheck/common"
+	"github.com/nerowander/MultiCheck/config"
 	"io/ioutil"
 	"os"
 	"strings"

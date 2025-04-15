@@ -1,11 +1,11 @@
 package Plugins
 
 import (
-	"InformationScan/common"
-	"InformationScan/config"
 	"database/sql"
 	"fmt"
 	_ "github.com/go-sql-driver/mysql"
+	"github.com/nerowander/MultiCheck/common"
+	"github.com/nerowander/MultiCheck/config"
 	"strings"
 	"time"
 )

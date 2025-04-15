@@ -1,4 +1,4 @@
-module PocScan
+module github.com/nerowander/MultiCheck/PocScan
 
 go 1.23.7
 

@@ -1,9 +1,6 @@
 package poclib
 
 import (
-	"PocScan/WebScan/lib"
-	"PocScan/common"
-	"PocScan/config"
 	"bytes"
 	"compress/gzip"
 	"crypto/md5"
@@ -15,6 +12,9 @@ import (
 	"github.com/google/cel-go/common/types"
 	"github.com/google/cel-go/common/types/ref"
 	"github.com/google/cel-go/interpreter/functions"
+	"github.com/nerowander/MultiCheck/WebScan/lib"
+	"github.com/nerowander/MultiCheck/common"
+	"github.com/nerowander/MultiCheck/config"
 	exprpb "google.golang.org/genproto/googleapis/api/expr/v1alpha1"
 	"io"
 	"math/rand"

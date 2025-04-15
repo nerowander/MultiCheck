@@ -1,17 +1,17 @@
 package Plugins
 
 import (
-	Modules2 "InformationScan/ExploitScan/Modules"
-	"InformationScan/PocScan/Modules"
-	"InformationScan/WebScan"
-	"InformationScan/WebScan/lib"
-	"InformationScan/common"
-	"InformationScan/config"
 	"bytes"
 	"compress/gzip"
 	"crypto/tls"
 	"encoding/json"
 	"fmt"
+	Modules2 "github.com/nerowander/MultiCheck/ExploitScan/Modules"
+	"github.com/nerowander/MultiCheck/PocScan/Modules"
+	"github.com/nerowander/MultiCheck/WebScan"
+	"github.com/nerowander/MultiCheck/WebScan/lib"
+	"github.com/nerowander/MultiCheck/common"
+	"github.com/nerowander/MultiCheck/config"
 	"golang.org/x/text/encoding/simplifiedchinese"
 	"io"
 	"io/ioutil"

@@ -1,10 +1,10 @@
 package common
 
 import (
-	"FinalProject/config"
 	"bufio"
 	"errors"
 	"fmt"
+	"github.com/nerowander/MultiCheck/config"
 	"math/rand"
 	"net"
 	"os"

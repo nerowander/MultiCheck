@@ -1,11 +1,11 @@
 package main
 
 import (
-	"InformationScan/Modules"
-	"InformationScan/common"
-	"InformationScan/config"
 	"encoding/json"
 	"fmt"
+	"github.com/nerowander/MultiCheck/InformationScan/Modules"
+	"github.com/nerowander/MultiCheck/common"
+	"github.com/nerowander/MultiCheck/config"
 	"net/http"
 	"strconv"
 	"sync"

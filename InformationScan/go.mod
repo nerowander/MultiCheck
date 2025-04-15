@@ -1,4 +1,4 @@
-module InformationScan
+module github.com/nerowander/MultiCheck/InformationScan
 
 go 1.23.7
 

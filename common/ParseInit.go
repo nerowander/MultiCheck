@@ -1,11 +1,11 @@
 package common
 
 import (
-	"FinalProject/config"
 	"bufio"
 	"encoding/hex"
 	"flag"
 	"fmt"
+	"github.com/nerowander/MultiCheck/config"
 	"os"
 	"strings"
 )

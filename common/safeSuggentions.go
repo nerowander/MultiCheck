@@ -1,8 +1,8 @@
 package common
 
 import (
-	"FinalProject/config"
 	"github.com/fatih/color"
+	"github.com/nerowander/MultiCheck/config"
 	"strings"
 )
 

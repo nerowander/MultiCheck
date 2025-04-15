@@ -1,10 +1,10 @@
 package poclib
 
 import (
-	"PocScan/common"
-	"PocScan/config"
 	"fmt"
 	"github.com/google/cel-go/common/types/ref"
+	"github.com/nerowander/MultiCheck/common"
+	"github.com/nerowander/MultiCheck/config"
 	"math/rand"
 	"net/http"
 	"net/url"

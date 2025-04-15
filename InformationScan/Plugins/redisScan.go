@@ -1,10 +1,10 @@
 package Plugins
 
 import (
-	"InformationScan/common"
-	"InformationScan/config"
 	"bufio"
 	"fmt"
+	"github.com/nerowander/MultiCheck/common"
+	"github.com/nerowander/MultiCheck/config"
 	"io"
 	"net"
 	"os"
