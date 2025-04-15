@@ -1,4 +1,5 @@
 .vscode/
 .idea/
-./multicheck
-./multicheck_linux
+multicheck
+multicheck_linux
+.DS_Store

@@ -8,7 +8,8 @@ WORKDIR /app
 COPY . .
 
 # 编译 Go 应用
-RUN go mod tidy && \
+RUN go env -w GOPROXY=https://goproxy.cn,direct && \ 
+    go mod tidy && \
     go build -o muticheck .
 
 #EXPOSE 8080
