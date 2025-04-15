@@ -1,9 +1,9 @@
 package Modules
 
 import (
-	"InformationScan/common"
-	"InformationScan/config"
 	"fmt"
+	"github.com/nerowander/MultiCheck/common"
+	"github.com/nerowander/MultiCheck/config"
 	"sync"
 	"time"
 )
