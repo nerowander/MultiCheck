@@ -1,11 +1,10 @@
 module github.com/nerowander/MultiCheck/PocScan
 
-go 1.23.7
+go 1.23.0
 
 require (
-	github.com/corpix/uarand v0.2.0
-	github.com/fatih/color v1.18.0
 	github.com/google/cel-go v0.24.1
+	github.com/nerowander/MultiCheck v0.0.0-20250415135036-e3a8f35cd2e0
 	github.com/satori/go.uuid v1.2.0
 	google.golang.org/genproto/googleapis/api v0.0.0-20250409194420-de1ac958c67a
 	google.golang.org/protobuf v1.36.6
@@ -15,6 +14,8 @@ require (
 require (
 	cel.dev/expr v0.19.1 // indirect
 	github.com/antlr4-go/antlr/v4 v4.13.0 // indirect
+	github.com/corpix/uarand v0.2.0 // indirect
+	github.com/fatih/color v1.18.0 // indirect
 	github.com/mattn/go-colorable v0.1.13 // indirect
 	github.com/mattn/go-isatty v0.0.20 // indirect
 	github.com/stoewer/go-strcase v1.2.0 // indirect

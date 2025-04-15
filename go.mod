@@ -2,8 +2,6 @@ module github.com/nerowander/MultiCheck
 
 go 1.23.0
 
-toolchain go1.23.7
-
 require (
 	github.com/c-bata/go-prompt v0.2.6
 	github.com/corpix/uarand v0.2.0

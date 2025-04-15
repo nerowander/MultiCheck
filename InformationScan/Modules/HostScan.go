@@ -1,13 +1,13 @@
 package Modules
 
 import (
-	"FinalProject/config"
-	"InformationScan/Plugins"
-	"InformationScan/WebScan/lib"
-	"InformationScan/common"
 	"bytes"
 	"encoding/json"
 	"fmt"
+	"github.com/nerowander/MultiCheck/InformationScan/Plugins"
+	"github.com/nerowander/MultiCheck/WebScan/lib"
+	"github.com/nerowander/MultiCheck/common"
+	"github.com/nerowander/MultiCheck/config"
 	"io/ioutil"
 	"net/http"
 	"reflect"
