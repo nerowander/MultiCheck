@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: main-module
+spec:
+    replicas: 1
+    selector:
+      matchLabels:
+        app: main-module
+    template:
+      metadata:
+        labels:
+          app: main-module
+      spec:
+        containers:
+          - name: main
+            image: multicheck/main-module:latest
+            imagePullPolicy: Never
+            command: [ "/bin/sh", "-c" ]
+            args:
+              - |
+                if [ -z "$CUSTOM_ARGS" ]; then
+                  exec /app/multicheck  # 进入交互式模式
+                else
+                  exec /app/multicheck $CUSTOM_ARGS  # 传入参数执行任务
+                fi
+            env:
+              - name: CUSTOM_ARGS
+                value: "-h"  # 默认不传参数，进入交互模式
+          # 默认不传参数，进入交互模式，也可以通过kubectl set env传递参数

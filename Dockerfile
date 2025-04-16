@@ -11,7 +11,7 @@ COPY . .
 RUN apk add --no-cache git && \
     go env -w GOPROXY=https://goproxy.cn,direct && \
     go mod tidy && \
-    go build -o muticheck .
+    go build -o multicheck .
 
 #EXPOSE 8080
 

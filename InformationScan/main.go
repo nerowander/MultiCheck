@@ -114,7 +114,7 @@ func scanHandler(w http.ResponseWriter, r *http.Request) {
 	taskWg.Add(1) // 记录任务
 	go scanTask(taskID)
 
-	fmt.Fprintf(w, "InfoScan started. Check status with task_id: %s, for example: /infoscanresult?task_id=xxx\n", taskID)
+	fmt.Fprintf(w, "InfoScan started. Check status with task_id: %s, for example: /infoscanresult?task_id=%s\n", taskID, taskID)
 }
 
 func resultHandler(w http.ResponseWriter, r *http.Request) {
