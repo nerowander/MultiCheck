@@ -31,9 +31,9 @@ func HostScan(info *config.InfoScan) {
 		jsonPayload := map[string]interface{}{
 			"hostfile":     config.HostFile,
 			"threads":      config.Threads,
-			"scanType":     config.ScanType,
+			"scantype":     config.ScanType,
 			"ports":        config.Ports,
-			"portsFile":    config.PortsFile,
+			"portsfile":    config.PortsFile,
 			"timeout":      config.Timeout,
 			"url":          config.URL,
 			"urlfile":      config.URLFile,
