@@ -65,6 +65,7 @@ func scanTask(taskID string) {
 	fmt.Printf("Start infoscanning target: %s\n", info.Hosts)
 	startTime := time.Now()
 	Modules.HostScan(&info)
+	common.GetSugestions()
 	result := fmt.Sprintf("Scan complete for target: %s, time used: %s", info.Hosts, time.Since(startTime))
 	taskResults.Store(taskID, result)
 	// 定时清理ID避免占用内存
@@ -108,7 +109,7 @@ func scanHandler(w http.ResponseWriter, r *http.Request) {
 	common.LogWaitTime = map[bool]int64{true: common.LogWaitTime, false: 60}[common.LogWaitTime > 0]
 
 	common.ParseInit(&info)
-	fmt.Printf("config.Ports: %s", config.Ports)
+	//fmt.Printf("config.Ports: %s", config.Ports)
 	taskID := fmt.Sprintf("%d", time.Now().UnixNano()) // 生成任务 ID
 
 	taskWg.Add(1) // 记录任务
@@ -140,7 +141,7 @@ func decodeJSONBody(r *http.Request) error {
 	if err := decoder.Decode(&scanConfig); err != nil {
 		return err
 	}
-	fmt.Printf("scanconfig.ports: %s", scanConfig.Ports)
+	//fmt.Printf("scanconfig.ports: %s", scanConfig.Ports)
 	config.HostFile = scanConfig.HostFile
 	config.Threads = scanConfig.Threads
 	config.ScanType = scanConfig.ScanType

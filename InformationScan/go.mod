@@ -5,9 +5,9 @@ go 1.23.0
 require (
 	github.com/go-sql-driver/mysql v1.9.2
 	github.com/jlaffaye/ftp v0.2.0
-	github.com/nerowander/MultiCheck v0.0.0-20250416150024-78373db2b3a0
-	github.com/nerowander/MultiCheck/ExploitScan v0.0.0-20250416150024-78373db2b3a0
-	github.com/nerowander/MultiCheck/PocScan v0.0.0-20250416150024-78373db2b3a0
+	github.com/nerowander/MultiCheck v0.0.0-20250416153017-e0567399c9db
+	github.com/nerowander/MultiCheck/ExploitScan v0.0.0-20250416153017-e0567399c9db
+	github.com/nerowander/MultiCheck/PocScan v0.0.0-20250416153017-e0567399c9db
 	github.com/stacktitan/smb v0.0.0-20190531122847-da9a425dceb8
 	golang.org/x/crypto v0.37.0
 	golang.org/x/text v0.24.0

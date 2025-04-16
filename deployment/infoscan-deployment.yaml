@@ -15,6 +15,8 @@ spec:
       containers:
         - name: infoscan
           image: multicheck/infoscan:latest
+          tty: true
+          stdin: true
           # 这里指定镜像为本地镜像
           imagePullPolicy: Never
           ports:
