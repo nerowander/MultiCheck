@@ -49,6 +49,8 @@ github.com/nerowander/MultiCheck v0.0.0-20250416121944-9a6be74ea819 h1:TAIc3irrY
 github.com/nerowander/MultiCheck v0.0.0-20250416121944-9a6be74ea819/go.mod h1:RbLLDGVgbgjob+gDu52bBoD57RbvsOEcN5qAjVd09TM=
 github.com/nerowander/MultiCheck v0.0.0-20250416134021-db9038ea938a h1:Cs1RU7+r4q0HhAlumoU+trA9LqQcVt0KfjL0MkCA5nI=
 github.com/nerowander/MultiCheck v0.0.0-20250416134021-db9038ea938a/go.mod h1:PuZaIiiZdOhM4FL/TeZsFWFSdLWHe/vMUr2umhlV5/U=
+github.com/nerowander/MultiCheck v0.0.0-20250416140338-eb07e6230322 h1:ZQOkVHRbPEyaP8W6oYh1mSUEpdC9ZTVNpzKlj1tvXRA=
+github.com/nerowander/MultiCheck v0.0.0-20250416140338-eb07e6230322/go.mod h1:t6FLyjR/B3ensWUWzKu3Q42bCsSDhGRacCUOdSiDHOI=
 github.com/nerowander/MultiCheck/ExploitScan v0.0.0-20250415140130-80bca4fb7ec8 h1:b/ESsZr0FDDiYI+FojmqJmifDMJhJrE9UZJxAL+hlu8=
 github.com/nerowander/MultiCheck/ExploitScan v0.0.0-20250415140130-80bca4fb7ec8/go.mod h1:1oOJleAz6BgoApwT3l8CJJy6N8ONR7oXaIkdPrxA0Os=
 github.com/nerowander/MultiCheck/ExploitScan v0.0.0-20250416085004-e3d8b170bf71 h1:fIERCZ+pwoll4s/63MugQn0lM7qMUfVdJ4bWZtZLOaU=
@@ -57,6 +59,8 @@ github.com/nerowander/MultiCheck/ExploitScan v0.0.0-20250416115807-b21bf1d76a16 
 github.com/nerowander/MultiCheck/ExploitScan v0.0.0-20250416115807-b21bf1d76a16/go.mod h1:BBrendvVbgqolNwJKwtR+LndGkh74nW7riZ30VVQn3A=
 github.com/nerowander/MultiCheck/ExploitScan v0.0.0-20250416121944-9a6be74ea819 h1:bFmiEHgFsXVsrPIJkr6+SYiIh3EMxVQRD6N0Mppje8o=
 github.com/nerowander/MultiCheck/ExploitScan v0.0.0-20250416121944-9a6be74ea819/go.mod h1:0JLP6E+7Nczkdqmx++6Ls+tKHLC6UNW2KrzdFnZQ5Ng=
+github.com/nerowander/MultiCheck/ExploitScan v0.0.0-20250416134021-db9038ea938a h1:R6zlY9WqEUoRYpegIze1qi4rskKdUeEjSc4EGZVsJhs=
+github.com/nerowander/MultiCheck/ExploitScan v0.0.0-20250416134021-db9038ea938a/go.mod h1:0JLP6E+7Nczkdqmx++6Ls+tKHLC6UNW2KrzdFnZQ5Ng=
 github.com/nerowander/MultiCheck/InformationScan v0.0.0-20250415141218-26584fdd6632 h1:RtGy9ISrgRu9hiQot79Ygt1AEzRmjOTMzpT4qxvVpsU=
 github.com/nerowander/MultiCheck/InformationScan v0.0.0-20250415141218-26584fdd6632/go.mod h1:SRbOx2nWClE9sW4nQb3EKQUuWoisVOU9zjK3NJnvoiQ=
 github.com/nerowander/MultiCheck/InformationScan v0.0.0-20250416085004-e3d8b170bf71 h1:roF9GDAZRKAo7e+Hv3ZP0weeJuLg2OppJ9ZDcQGFs2U=
@@ -65,6 +69,8 @@ github.com/nerowander/MultiCheck/InformationScan v0.0.0-20250416115807-b21bf1d76
 github.com/nerowander/MultiCheck/InformationScan v0.0.0-20250416115807-b21bf1d76a16/go.mod h1:Kd/3ZFldjBdkRxVbqPUuCvsJVJUhSSW0WJhXfpY+UsY=
 github.com/nerowander/MultiCheck/InformationScan v0.0.0-20250416121944-9a6be74ea819 h1:OY/LGc9ktZWnwZgJHJKnNLrag7rvl8c3psylNZ7Y4B8=
 github.com/nerowander/MultiCheck/InformationScan v0.0.0-20250416121944-9a6be74ea819/go.mod h1:iDBLQaCdrXH2MTWgKZ9rK4829DakzVlhM3kjs20J+S8=
+github.com/nerowander/MultiCheck/InformationScan v0.0.0-20250416134021-db9038ea938a h1:C/hztaUlq6GzEyc0O0NerUxFlG/E63XfBfMytc3CozY=
+github.com/nerowander/MultiCheck/InformationScan v0.0.0-20250416134021-db9038ea938a/go.mod h1:iDBLQaCdrXH2MTWgKZ9rK4829DakzVlhM3kjs20J+S8=
 github.com/pkg/term v1.2.0-beta.2 h1:L3y/h2jkuBVFdWiJvNfYfKmzcCnILw7mJWm2JQuMppw=
 github.com/pkg/term v1.2.0-beta.2/go.mod h1:E25nymQcrSllhX42Ok8MRm1+hyBdHY0dCeiKZ9jpNGw=
 github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=

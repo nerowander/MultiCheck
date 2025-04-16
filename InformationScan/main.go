@@ -108,7 +108,7 @@ func scanHandler(w http.ResponseWriter, r *http.Request) {
 	common.LogWaitTime = map[bool]int64{true: common.LogWaitTime, false: 60}[common.LogWaitTime > 0]
 
 	common.ParseInit(&info)
-
+	fmt.Printf("config.Ports: %s", config.Ports)
 	taskID := fmt.Sprintf("%d", time.Now().UnixNano()) // 生成任务 ID
 
 	taskWg.Add(1) // 记录任务
@@ -140,6 +140,7 @@ func decodeJSONBody(r *http.Request) error {
 	if err := decoder.Decode(&scanConfig); err != nil {
 		return err
 	}
+	fmt.Printf("scanconfig.ports: %s", scanConfig.Ports)
 	config.HostFile = scanConfig.HostFile
 	config.Threads = scanConfig.Threads
 	config.ScanType = scanConfig.ScanType
