@@ -10,7 +10,8 @@ WORKDIR /app
 #COPY ./go.mod .
 COPY . .
 
-RUN go mod tidy && \
+RUN go env -w GOPROXY=https://goproxy.cn,direct && \
+    go mod tidy && \
     go build -o infomationscan .
 
 EXPOSE 8080

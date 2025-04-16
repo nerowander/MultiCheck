@@ -1,9 +1,9 @@
 package flag_cli
 
 import (
-	"FinalProject/common"
-	"FinalProject/config"
 	"flag"
+	"github.com/nerowander/MultiCheck/common"
+	"github.com/nerowander/MultiCheck/config"
 )
 
 func Execute(infoScan *config.InfoScan) {
