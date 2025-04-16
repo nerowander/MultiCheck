@@ -21,7 +21,7 @@ func HostScan(info *config.InfoScan) {
 	if config.EnableInfoContainer == true {
 		//config.EnablePocContainer = true
 		module := "InformationScan"
-		url := fmt.Sprintf("http://%s-service/infoscan?hosts=%s&brute=%s&ftpreadfile=%s&ftpwritefile=%s&sshkey=%s&domain=%s&"+
+		url := fmt.Sprintf("http://%s-service:8080/infoscan?hosts=%s&brute=%s&ftpreadfile=%s&ftpwritefile=%s&sshkey=%s&domain=%s&"+
 			"skipredis=%s&redissshfile=%s&rediswebshellfile=%s&rediscronhost=%s&remotepath=%s&logwaittime=%s&printlog=%s"+
 			"savelogtojson=%s&savelogtohtml=%s", module, info.Hosts, strconv.FormatBool(info.Brute), info.FTPReadFile, info.FTPWriteFile,
 			info.SshKey, info.Domain, strconv.FormatBool(info.SkipRedis), info.RedisSshFile, info.RedisWebshellFile, info.RedisCronHost,

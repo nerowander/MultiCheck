@@ -15,16 +15,17 @@ spec:
       containers:
         - name: main
           image: muticheck/main-module:latest
+          imagePullPolicy: Never
           command: [ "/bin/sh", "-c" ]
           args:
               - |
                 if [ -z "$CUSTOM_ARGS" ]; then
-                  exec /app/main  # 进入交互式模式
+                  echo "目前不支持交互式模式"  # 目前不支持进入交互式模式
                 else
-                  exec /app/main $CUSTOM_ARGS  # 传入参数执行任务
+                  exec /app/muticheck $CUSTOM_ARGS  # 传入参数执行任务
                 fi
           env:
             - name: CUSTOM_ARGS
-              value: ""  # 默认不传参数，进入交互模式
+              value: "-"  # 默认不传参数，进入交互模式
         # 默认不传参数，进入交互模式，也可以通过kubectl set env传递参数
 
