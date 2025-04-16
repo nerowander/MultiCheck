@@ -28,9 +28,9 @@ require (
 	github.com/mattn/go-isatty v0.0.20 // indirect
 	github.com/mattn/go-runewidth v0.0.9 // indirect
 	github.com/mattn/go-tty v0.0.3 // indirect
-	github.com/nerowander/MultiCheck/ExploitScan v0.0.0-20250416085004-e3d8b170bf71 // indirect
-	github.com/nerowander/MultiCheck/InformationScan v0.0.0-20250416085004-e3d8b170bf71 // indirect
-	github.com/nerowander/MultiCheck/PocScan v0.0.0-20250416085004-e3d8b170bf71 // indirect
+	github.com/nerowander/MultiCheck/ExploitScan v0.0.0-20250416115807-b21bf1d76a16 // indirect
+	github.com/nerowander/MultiCheck/InformationScan v0.0.0-20250416115807-b21bf1d76a16 // indirect
+	github.com/nerowander/MultiCheck/PocScan v0.0.0-20250416115807-b21bf1d76a16 // indirect
 	github.com/pkg/term v1.2.0-beta.2 // indirect
 	github.com/stoewer/go-strcase v1.2.0 // indirect
 	golang.org/x/exp v0.0.0-20230515195305-f3d0a9c9a5cc // indirect

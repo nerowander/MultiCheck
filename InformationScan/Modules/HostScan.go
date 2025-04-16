@@ -20,7 +20,7 @@ func HostScan(info *config.InfoScan) {
 	// 判断是否是容器模式，如果是则传参数到另一个函数，请求InformationScan module容器
 	if config.EnableInfoContainer == true {
 		//config.EnablePocContainer = true
-		module := "InformationScan"
+		module := "infoscan"
 		url := fmt.Sprintf("http://%s-service:8080/infoscan?hosts=%s&brute=%s&ftpreadfile=%s&ftpwritefile=%s&sshkey=%s&domain=%s&"+
 			"skipredis=%s&redissshfile=%s&rediswebshellfile=%s&rediscronhost=%s&remotepath=%s&logwaittime=%s&printlog=%s"+
 			"savelogtojson=%s&savelogtohtml=%s", module, info.Hosts, strconv.FormatBool(info.Brute), info.FTPReadFile, info.FTPWriteFile,

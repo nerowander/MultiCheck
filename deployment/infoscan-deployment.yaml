@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: infoscan
-          image: muticheck/infoscan:latest
+          image: multicheck/infoscan:latest
           # 这里指定镜像为本地镜像
           imagePullPolicy: Never
           ports:

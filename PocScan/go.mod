@@ -4,7 +4,7 @@ go 1.23.0
 
 require (
 	github.com/google/cel-go v0.24.1
-	github.com/nerowander/MultiCheck v0.0.0-20250416085004-e3d8b170bf71
+	github.com/nerowander/MultiCheck v0.0.0-20250416115807-b21bf1d76a16
 	github.com/satori/go.uuid v1.2.0
 	google.golang.org/genproto/googleapis/api v0.0.0-20250409194420-de1ac958c67a
 	google.golang.org/protobuf v1.36.6
@@ -26,8 +26,8 @@ require (
 	github.com/mattn/go-isatty v0.0.20 // indirect
 	github.com/mattn/go-runewidth v0.0.9 // indirect
 	github.com/mattn/go-tty v0.0.3 // indirect
-	github.com/nerowander/MultiCheck/ExploitScan v0.0.0-20250415140130-80bca4fb7ec8 // indirect
-	github.com/nerowander/MultiCheck/InformationScan v0.0.0-20250415141218-26584fdd6632 // indirect
+	github.com/nerowander/MultiCheck/ExploitScan v0.0.0-20250416085004-e3d8b170bf71 // indirect
+	github.com/nerowander/MultiCheck/InformationScan v0.0.0-20250416085004-e3d8b170bf71 // indirect
 	github.com/pkg/term v1.2.0-beta.2 // indirect
 	github.com/stacktitan/smb v0.0.0-20190531122847-da9a425dceb8 // indirect
 	github.com/stoewer/go-strcase v1.2.0 // indirect
