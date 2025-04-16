@@ -71,6 +71,7 @@ func HostScan(info *config.InfoScan) {
 		var body []byte
 		var err error
 		body, err = json.Marshal(jsonPayload)
+		fmt.Println(string(body))
 		if err != nil {
 			fmt.Printf("Error marshaling JSON: %v\n", err)
 			return
