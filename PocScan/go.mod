@@ -4,7 +4,7 @@ go 1.23.0
 
 require (
 	github.com/google/cel-go v0.24.1
-	github.com/nerowander/MultiCheck v0.0.0-20250416153017-e0567399c9db
+	github.com/nerowander/MultiCheck v0.0.0-20250416165737-a4d0e0b4d7b8
 	github.com/satori/go.uuid v1.2.0
 	google.golang.org/genproto/googleapis/api v0.0.0-20250409194420-de1ac958c67a
 	google.golang.org/protobuf v1.36.6

@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: infoscan-pv
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteMany  # 根据需要选择 ReadWriteMany 或 ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  hostPath:
+    path: ..  # 物理机上共享文件的路径
+    type: /app  # 如果目录不存在，K8s 会自动创建
