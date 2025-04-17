@@ -39,7 +39,11 @@ func init() {
 	log.SetOutput(io.Discard)
 	LogSuccessTime = time.Now().Unix()
 	FileTime = time.Now().Unix()
-
+	err := os.MkdirAll("./output", os.ModePerm)
+	if err != nil {
+		fmt.Println("Error creating output directory:", err)
+		return
+	}
 	fileExt := filepath.Ext(config.OutPutFile)
 	fileNameWithoutExt := strings.TrimSuffix(config.OutPutFile, fileExt)
 	LogFileName = fmt.Sprintf("%s_%d%s", fileNameWithoutExt, FileTime, fileExt)
@@ -88,14 +92,7 @@ func logSave() {
 func WriteLogToFile(result string, filename string) {
 	// json or html
 	// 最好加一个时间戳的文件
-	var err error
-	err = os.MkdirAll("./output", os.ModePerm)
-	if err != nil {
-		fmt.Println("Error creating output directory:", err)
-		return
-	}
-	var file *os.File
-	file, err = os.OpenFile(filepath.Join("./output", filename), os.O_WRONLY|os.O_CREATE|os.O_APPEND, 0666)
+	file, err := os.OpenFile(filepath.Join("./output", filename), os.O_WRONLY|os.O_CREATE|os.O_APPEND, 0666)
 	if err != nil {
 		fmt.Printf("Open file %s error, %v\n", filename, err)
 		return

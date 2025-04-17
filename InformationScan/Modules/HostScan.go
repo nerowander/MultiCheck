@@ -129,7 +129,7 @@ func HostScan(info *config.InfoScan) {
 			}
 
 			for _, target := range AlivePorts {
-				fmt.Println(config.ScanType)
+				//fmt.Println(config.ScanType)
 				info.Hosts, info.Ports = strings.Split(target, ":")[0], strings.Split(target, ":")[1]
 				if config.ScanType == "all" {
 					// todo: add 135
