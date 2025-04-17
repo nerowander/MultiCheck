@@ -88,8 +88,14 @@ func logSave() {
 func WriteLogToFile(result string, filename string) {
 	// json or html
 	// 最好加一个时间戳的文件
-
-	file, err := os.OpenFile(filepath.Join("./output", filename), os.O_WRONLY|os.O_CREATE|os.O_APPEND, 0666)
+	var err error
+	err = os.MkdirAll("./output", os.ModePerm)
+	if err != nil {
+		fmt.Println("Error creating output directory:", err)
+		return
+	}
+	var file *os.File
+	file, err = os.OpenFile(filepath.Join("./output", filename), os.O_WRONLY|os.O_CREATE|os.O_APPEND, 0666)
 	if err != nil {
 		fmt.Printf("Open file %s error, %v\n", filename, err)
 		return
