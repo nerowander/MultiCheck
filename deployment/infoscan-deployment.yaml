@@ -15,12 +15,17 @@ spec:
       containers:
         - name: infoscan
           image: multicheck/infoscan:latest
-          tty: true
-          stdin: true
           # 这里指定镜像为本地镜像
           imagePullPolicy: Never
           ports:
             - containerPort: 8080
+          volumeMounts:
+            - name: output-volume
+              mountPath: /app/output/  # 挂载到容器的 output 目录
+      volumes:
+        - name: output-volume
+          persistentVolumeClaim:
+            claimName: infoscan-pvc  # 通过 PVC 挂载到容器内
 ---
 apiVersion: v1
 kind: Service

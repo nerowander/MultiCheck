@@ -6,7 +6,7 @@ require (
 	github.com/c-bata/go-prompt v0.2.6
 	github.com/corpix/uarand v0.2.0
 	github.com/fatih/color v1.18.0
-	github.com/nerowander/MultiCheck/InformationScan v0.0.0-20250417085435-9ced86608a5a
+	github.com/nerowander/MultiCheck/InformationScan v0.0.0-20250417093210-bfcd71884a71
 )
 
 require (

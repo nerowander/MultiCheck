@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"v1","kind":"PersistentVolumeClaim","metadata":{"annotations":{},"name":"infoscan-pvc","namespace":"default"},"spec":{"accessModes":["ReadWriteMany"],"resources":{"requests":{"storage":"1Gi"}}}}
+    pv.kubernetes.io/bind-completed: "yes"
+    pv.kubernetes.io/bound-by-controller: "yes"
+    volume.beta.kubernetes.io/storage-provisioner: k8s.io/minikube-hostpath
+    volume.kubernetes.io/storage-provisioner: k8s.io/minikube-hostpath
+  creationTimestamp: "2025-04-17T13:38:26Z"
+  finalizers:
+  - kubernetes.io/pvc-protection
+  name: infoscan-pvc
+  namespace: default
+  resourceVersion: "15816"
+  uid: be809574-5cac-4309-a1ba-9c6af07b74f3
+spec:
+  accessModes:
+  - ReadWriteMany
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: standard
+  volumeMode: Filesystem
+  volumeName: infoscan-pv
+status:
+  accessModes:
+  - ReadWriteMany
+  capacity:
+    storage: 1Gi
+  phase: Bound

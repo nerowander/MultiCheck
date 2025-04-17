@@ -50,6 +50,8 @@ github.com/nerowander/MultiCheck/InformationScan v0.0.0-20250416165737-a4d0e0b4d
 github.com/nerowander/MultiCheck/InformationScan v0.0.0-20250416165737-a4d0e0b4d7b8/go.mod h1:p0FZCiRLbc3BVg10J+ii1rD2nQzH5lTMFF8/iIFwQD8=
 github.com/nerowander/MultiCheck/InformationScan v0.0.0-20250417085435-9ced86608a5a h1:MpHJYLEugLo9gZ8T4O6smElVVY+5FhgfdFKa4NXXwPM=
 github.com/nerowander/MultiCheck/InformationScan v0.0.0-20250417085435-9ced86608a5a/go.mod h1:7XY+aXmvlYIPgtt9okeE0Iz9sRxYp7nkl9Be9C5X6bY=
+github.com/nerowander/MultiCheck/InformationScan v0.0.0-20250417093210-bfcd71884a71 h1:wTthCmoKsLCcvY/FSTGxx9FaliVqDCLKJUzM6DPP0TY=
+github.com/nerowander/MultiCheck/InformationScan v0.0.0-20250417093210-bfcd71884a71/go.mod h1:5K9rtBf7aBeIzaH+JBI6o6l60wrc0x2ZesMRlfWlepc=
 github.com/nerowander/MultiCheck/PocScan v0.0.0-20250416153017-e0567399c9db h1:jhqxjhwNy5g2eQfGMETPaHXcLHb1TkT7uW4QgeRTgbQ=
 github.com/nerowander/MultiCheck/PocScan v0.0.0-20250416153017-e0567399c9db/go.mod h1:SL/RAbw+HxNkHe8NVYQDENtpBXx/zfLO+zya51vz2Ig=
 github.com/nerowander/MultiCheck/PocScan v0.0.0-20250416165737-a4d0e0b4d7b8 h1:2aaIehPfJo/VfeKrRu2RofuZ8CwpIQ5940SKYGpgopg=
