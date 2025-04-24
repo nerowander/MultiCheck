@@ -159,21 +159,21 @@ var (
 	NoPOC        bool
 	NoExploit    bool
 	//NoIOT                  bool
-	DnsLog                 bool = false
-	CeyeToken              string
-	CeyeURL                string
-	FullPOC                bool   = false
-	FullEXP                bool   = false
-	SaveResult             bool   = true
-	OutPutFile             string = DefaultOutputFile
-	EnableInfoContainer    bool   = false
-	EnablePocContainer     bool   = false
-	EnableExploitContainer bool   = false
-	PocBody                string
-	CheckPocResBody        string
-	CheckExpResBody        string
-	WriteWebShellBody      string
-	CheckWebshellPath      string
-	WebShellCommand        string
-	CheckWebShellCmdBody   string
+	DnsLog              bool = false
+	CeyeToken           string
+	CeyeURL             string
+	FullPOC             bool   = false
+	FullEXP             bool   = false
+	SaveResult          bool   = true
+	OutPutFile          string = DefaultOutputFile
+	EnableInfoContainer bool   = false
+	EnableVulContainer  bool   = false
+	//EnableExploitContainer bool   = false
+	PocBody              string
+	CheckPocResBody      string
+	CheckExpResBody      string
+	WriteWebShellBody    string
+	CheckWebshellPath    string
+	WebShellCommand      string
+	CheckWebShellCmdBody string
 )

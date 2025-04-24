@@ -78,7 +78,7 @@ func scanTask(taskID string) {
 func scanHandler(w http.ResponseWriter, r *http.Request) {
 	// 接收扫描config参数,info赋值
 	// 由命令行传参转为url传参
-	config.EnablePocContainer = true
+	//config.EnablePocContainer = true
 	if err := decodeJSONBody(r); err != nil {
 		http.Error(w, "Invalid JSON request", http.StatusBadRequest)
 		return

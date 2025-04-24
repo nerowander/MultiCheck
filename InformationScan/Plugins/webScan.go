@@ -27,9 +27,9 @@ import (
 func webScan(info *config.InfoScan) error {
 
 	// 判断是否是容器模式，如果是则传参数到另一个函数，判断请求poc容器/exp容器，或者2个都有
-	if config.EnablePocContainer == true {
-		if config.ScanType == "pocscan" {
-			module := "PocScan"
+	if config.EnableVulContainer == true {
+		if config.ScanType == "pocscan" || config.ScanType == "all" {
+			module := "pocscan"
 			url := fmt.Sprintf("http://%s-service/pocscan?hosts=%s&url=%s&logwaittime=%s&printlog=%s&savelogtojson=%s&savelogtohtml=%s",
 				module, info.Hosts, info.Url, strconv.FormatInt(common.LogWaitTime, 10),
 				strconv.FormatBool(common.PrintLog), strconv.FormatBool(common.SaveLogToJSON),
@@ -37,12 +37,12 @@ func webScan(info *config.InfoScan) error {
 
 			fmt.Println(url)
 			jsonPayload := map[string]interface{}{
-				"PocNum":     config.PocNum,
-				"WebTimeout": config.WebTimeout,
-				"PocType":    config.PocType,
-				"PocName":    config.PocName,
-				"PocPath":    config.PocPath,
-				"Cookie":     config.Cookie,
+				"pocnum":     config.PocNum,
+				"webtimeout": config.WebTimeout,
+				"poctype":    config.PocType,
+				"pocname":    config.PocName,
+				"pocpath":    config.PocPath,
+				"cookie":     config.Cookie,
 			}
 			var body []byte
 			var err error
@@ -60,21 +60,21 @@ func webScan(info *config.InfoScan) error {
 			defer resp.Body.Close()
 			resBody, _ := ioutil.ReadAll(resp.Body)
 			fmt.Println(string(resBody))
-			return nil
-		} else if config.ScanType == "exploit" {
-			module := "Exploit"
+			//return nil
+		} else if config.ScanType == "exploit" || config.ScanType == "all" {
+			module := "exploit"
 			url := fmt.Sprintf("http://%s-service/expscan?hosts=%s&url=%s&logwaittime=%s&printlog=%s&savelogtojson=%s&savelogtohtml=%s",
 				module, info.Hosts, info.Url, strconv.FormatInt(common.LogWaitTime, 10),
 				strconv.FormatBool(common.PrintLog), strconv.FormatBool(common.SaveLogToJSON),
 				strconv.FormatBool(common.SaveLogToHTML))
 			fmt.Println(url)
 			jsonPayload := map[string]interface{}{
-				"ExpNum":     config.ExpNum,
-				"WebTimeout": config.WebTimeout,
-				"ExpType":    config.ExpType,
-				"ExpName":    config.ExpName,
-				"ExpPath":    config.ExpPath,
-				"Cookie":     config.Cookie,
+				"expnum":     config.ExpNum,
+				"webtimeout": config.WebTimeout,
+				"exptype":    config.ExpType,
+				"expname":    config.ExpName,
+				"exppath":    config.ExpPath,
+				"cookie":     config.Cookie,
 			}
 			var body []byte
 			var err error
@@ -92,11 +92,12 @@ func webScan(info *config.InfoScan) error {
 			defer resp.Body.Close()
 			resBody, _ := ioutil.ReadAll(resp.Body)
 			fmt.Println(string(resBody))
-			return nil
-		} else if config.ScanType == "all" {
-			// 后面测试时再补充
-			return nil
+			//return nil
 		}
+		//} else if config.ScanType == "all" {
+		//	// 后面测试时再补充
+		//	return nil
+		//}
 		return nil
 	} else {
 		err, CheckData := GOWebTitle(info)
@@ -107,7 +108,6 @@ func webScan(info *config.InfoScan) error {
 				return nil
 			}
 		}
-		// 另一个容器lib.inithttp()
 		if config.ScanType == "pocscan" {
 			// poc扫描 web+iot
 			Modules.WebPocScan(info)
@@ -122,10 +122,6 @@ func webScan(info *config.InfoScan) error {
 			Modules2.WebExploit(info)
 			return nil
 		}
-		// web poc+exploit扫描
-		// todo: 加物联网这一块的扫描，物联网部分已经放到上面的pocscan和exploit里了
-
-		// Poc扫描，针对不属于上面的scantype的情况
 		if config.NoPOC == false && err == nil {
 			Modules.WebPocScan(info)
 		} else if config.NoExploit == false && err == nil {

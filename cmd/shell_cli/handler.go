@@ -900,7 +900,7 @@ func handleEnableInfoContainer(value interface{}) (result string) {
 			return result
 		}
 		modules["Config"]["EnableInfoContainer"] = strconv.FormatBool(config.EnableInfoContainer)
-		result = fmt.Sprintf("Set the value of SaveLogToHTML: %v", common.SaveLogToHTML)
+		result = fmt.Sprintf("Set the value of EnableInfoContainer: %v", config.EnableInfoContainer)
 		return result
 	} else if v.Kind() == reflect.Bool {
 		// 如果是 bool 类型，直接赋值
@@ -910,6 +910,34 @@ func handleEnableInfoContainer(value interface{}) (result string) {
 		return result
 	} else {
 		result = fmt.Sprintf("Invalid value for EnableInfoContainer, type error")
+		return result
+	}
+}
+
+func handleVulContainer(value interface{}) (result string) {
+	v := reflect.ValueOf(value)
+	if v.Kind() == reflect.String {
+		// 如果是字符串，尝试将其转换为 bool
+		strValue := strings.ToLower(v.String())
+		if strValue == "true" {
+			config.EnableVulContainer = true
+		} else if strValue == "false" {
+			config.EnableVulContainer = false
+		} else {
+			result = fmt.Sprintf("Invalid value for EnableVulContainer, expected 'true' or 'false', got: %s", strValue)
+			return result
+		}
+		modules["Config"]["EnableVulContainer"] = strconv.FormatBool(config.EnableVulContainer)
+		result = fmt.Sprintf("Set the value of EnableVulContainer: %v", config.EnableVulContainer)
+		return result
+	} else if v.Kind() == reflect.Bool {
+		// 如果是 bool 类型，直接赋值
+		config.EnableVulContainer = v.Bool()
+		modules["Config"]["EnableVulContainer"] = strconv.FormatBool(config.EnableVulContainer)
+		result = fmt.Sprintf("Set the value of EnableVulContainer: %v", config.EnableVulContainer)
+		return result
+	} else {
+		result = fmt.Sprintf("Invalid value for EnableVulContainer, type error")
 		return result
 	}
 }

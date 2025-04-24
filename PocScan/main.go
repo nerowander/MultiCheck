@@ -34,14 +34,18 @@ func scanTask(taskID string) {
 	startTime := time.Now()
 	lib.InitHTTP()
 	Modules.WebPocScan(&info)
+	common.GetSugestions()
 	//time.Sleep(10 * time.Second) // 模拟长时间扫描
 	result := fmt.Sprintf("PocScan complete for target: %s, time used: %s", info.Hosts, time.Since(startTime))
 	taskResults.Store(taskID, result)
+	time.AfterFunc(60*time.Second, func() {
+		taskResults.Delete(taskID)
+		fmt.Printf("Task result for %s deleted after 60s\n", taskID)
+	})
 }
 
 func scanHandler(w http.ResponseWriter, r *http.Request) {
 	// 接收扫描config参数,info赋值
-
 	if err := decodeJSONBody(r); err != nil {
 		http.Error(w, "Invalid JSON request", http.StatusBadRequest)
 		return
@@ -56,10 +60,6 @@ func scanHandler(w http.ResponseWriter, r *http.Request) {
 	config.WebTimeout = map[bool]int64{true: config.WebTimeout, false: 5}[config.WebTimeout > 0]
 	config.PocNum = map[bool]int{true: config.PocNum, false: 20}[config.PocNum > 0]
 	common.LogWaitTime = map[bool]int64{true: common.LogWaitTime, false: 60}[common.LogWaitTime > 0]
-	//if hosts == "" {
-	//	http.Error(w, "Missing target parameter", http.StatusBadRequest)
-	//	return
-	//}
 
 	taskID := fmt.Sprintf("%d", time.Now().UnixNano()) // 生成任务 ID
 

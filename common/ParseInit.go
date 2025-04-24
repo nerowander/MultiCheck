@@ -163,13 +163,6 @@ func parseUserInput(info *config.InfoScan) {
 
 	// extra ports
 	if config.AddPorts != "" {
-		//if strings.HasSuffix(config.Ports, ",") {
-		//	config.Ports += config.AddPorts
-		//} else {
-		//	config.Ports += "," + config.AddPorts
-		//}
-		// config.ports = 111,222
-		// config.ports = 111
 		config.Ports += "," + config.AddPorts
 	}
 
@@ -189,43 +182,6 @@ func parseUserInput(info *config.InfoScan) {
 	}
 
 	// todo: 后续添加proxy功能
-
-	//if Socks5Proxy != "" && !strings.HasPrefix(Socks5Proxy, "socks5://") {
-	//	if !strings.Contains(Socks5Proxy, ":") {
-	//		Socks5Proxy = "socks5://127.0.0.1" + Socks5Proxy
-	//	} else {
-	//		Socks5Proxy = "socks5://" + Socks5Proxy
-	//	}
-	//}
-	//if Socks5Proxy != "" {
-	//	fmt.Println("Socks5Proxy:", Socks5Proxy)
-	//	_, err := url.Parse(Socks5Proxy)
-	//	if err != nil {
-	//		fmt.Println("Socks5Proxy parse error:", err)
-	//		os.Exit(0)
-	//	}
-	//	NoPing = true
-	//}
-	//if Proxy != "" {
-	//	if Proxy == "1" {
-	//		Proxy = "http://127.0.0.1:8080"
-	//	} else if Proxy == "2" {
-	//		Proxy = "socks5://127.0.0.1:1080"
-	//	} else if !strings.Contains(Proxy, "://") {
-	//		Proxy = "http://127.0.0.1:" + Proxy
-	//	}
-	//	fmt.Println("Proxy:", Proxy)
-	//	if !strings.HasPrefix(Proxy, "socks") && !strings.HasPrefix(Proxy, "http") {
-	//		fmt.Println("no support this proxy")
-	//		os.Exit(0)
-	//	}
-	//	_, err := url.Parse(Proxy)
-	//	if err != nil {
-	//		fmt.Println("Proxy parse error:", err)
-	//		os.Exit(0)
-	//	}
-	//}
-
 	if config.Hash != "" && len(config.Hash) != 32 {
 		fmt.Println("[-] input Hash is error,len(hash) must be 32")
 		os.Exit(0)

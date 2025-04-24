@@ -3,11 +3,6 @@ FROM golang:1.23-alpine
 
 WORKDIR /app
 
-#COPY ./config .
-#COPY ./InformationScan .
-#COPY ../common .
-#COPY ./WebScan .
-#COPY ./go.mod .
 COPY . .
 
 RUN go env -w GOPROXY=https://goproxy.cn,direct && \
