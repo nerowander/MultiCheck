@@ -176,4 +176,6 @@ var (
 	CheckWebshellPath    string
 	WebShellCommand      string
 	CheckWebShellCmdBody string
+	UseShell             bool = false
+	UseContainer         bool = false
 )

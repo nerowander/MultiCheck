@@ -2,13 +2,18 @@ package main
 
 import (
 	"encoding/json"
+	"errors"
 	"fmt"
 	"github.com/nerowander/MultiCheck/InformationScan/Modules"
 	"github.com/nerowander/MultiCheck/common"
 	"github.com/nerowander/MultiCheck/config"
+	"log"
 	"net/http"
+	"os"
+	"os/signal"
 	"strconv"
 	"sync"
+	"syscall"
 	"time"
 )
 
@@ -61,9 +66,14 @@ type ScanConfig struct {
 }
 
 func scanTask(taskID string) {
-	defer taskWg.Done() // 任务完成后减少计数
+	defer func() {
+		taskWg.Done()
+		common.ClearLogChannel(common.LogResults)
+	}()
+	// 任务完成后减少计数
 	fmt.Printf("Start infoscanning target: %s\n", info.Hosts)
 	startTime := time.Now()
+	config.UseContainer = true
 	Modules.HostScan(&info)
 	common.GetSugestions()
 	result := fmt.Sprintf("Scan complete for target: %s, time used: %s", info.Hosts, time.Since(startTime))
@@ -188,6 +198,8 @@ func pingHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
+	shutdown := make(chan os.Signal, 1)
+	signal.Notify(shutdown, syscall.SIGTERM, syscall.SIGINT, syscall.SIGQUIT)
 	http.HandleFunc("/infoscan", scanHandler)
 	http.HandleFunc("/infoscanresult", resultHandler)
 	http.HandleFunc("/ping", pingHandler)
@@ -195,7 +207,18 @@ func main() {
 		taskWg.Wait() // 等待所有后台任务完成
 		fmt.Println("All InfoScan tasks completed.")
 	}()
-
-	fmt.Println("Server started on :8080")
-	http.ListenAndServe(":8080", nil)
+	server := &http.Server{Addr: ":8080"}
+	go func() {
+		fmt.Println("Server started on :8080")
+		if err := server.ListenAndServe(); err != nil && !errors.Is(err, http.ErrServerClosed) {
+			log.Fatalf("ListenAndServe error: %v", err)
+		}
+	}()
+	// 加一个close channel的监听
+	//fmt.Println("Server started on :8080")
+	//http.ListenAndServe(":8080", nil)
+	_ = <-shutdown
+	fmt.Println("InfoScan module exit")
+	close(common.LogResults)
+	os.Exit(0)
 }

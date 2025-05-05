@@ -16,12 +16,14 @@ func Execute() {
 	var info config.InfoScan
 	args := os.Args[1:]
 	if len(args) > 0 {
+		config.UseShell = false
 		flag_cli.Execute(&info)
 		common.ParseInit(&info)
 		Modules.HostScan(&info)
 		common.GetSugestions()
 		fmt.Printf("[*] Task finished, used time: %s\n", time.Since(startTime))
 	} else {
+		config.UseShell = true
 		shell_cli.Start()
 	}
 }

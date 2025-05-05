@@ -35,6 +35,17 @@ type JsonLog struct {
 
 var htmlLogs []string
 
+func ClearLogChannel(ch chan *string) {
+	for {
+		select {
+		case <-ch:
+			// 丢弃日志
+		default:
+			// 通道清空了
+			return
+		}
+	}
+}
 func init() {
 	log.SetOutput(io.Discard)
 	LogSuccessTime = time.Now().Unix()

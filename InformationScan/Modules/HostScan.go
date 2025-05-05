@@ -118,7 +118,6 @@ func HostScan(info *config.InfoScan) {
 				config.WG.Wait()
 				return
 			}
-
 			if len(info.HostPort) > 0 {
 				// ip:port
 				AlivePorts = append(AlivePorts, info.HostPort...)
@@ -158,7 +157,10 @@ func HostScan(info *config.InfoScan) {
 		}
 		wg.Wait()
 		config.WG.Wait()
-		close(common.LogResults)
+		if config.UseShell == false && config.UseContainer == false {
+			close(common.LogResults)
+		}
+		//close(common.LogResults)
 		fmt.Printf("已完成扫描任务 %v/%v\n", common.End, common.Num)
 	}
 }

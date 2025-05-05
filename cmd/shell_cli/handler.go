@@ -38,7 +38,7 @@ func handleScanType(value interface{}) (result string) {
 	v := reflect.ValueOf(value)
 	if v.Kind() == reflect.String {
 		config.ScanType = v.String()
-		modules["Config"]["ScanType"] = strconv.Itoa(config.Threads)
+		modules["Config"]["ScanType"] = config.ScanType
 		result = fmt.Sprintf("Set the value of ScanType: %s", config.ScanType)
 		return result
 	} else {

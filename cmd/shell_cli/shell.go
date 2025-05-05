@@ -113,6 +113,7 @@ func executor(input string) {
 
 	switch args[0] {
 	case "exit":
+		close(common.LogResults)
 		fmt.Println("Exiting...")
 		os.Exit(0)
 	case "use": // 使用某一模块
@@ -145,9 +146,11 @@ func executor(input string) {
 		// 开始某一模块的任务
 		if len(args) == 2 {
 			if args[1] == "infoscan" {
+				common.ParseInit(&infoScan)
 				Modules.HostScan(&infoScan)
 				common.GetSugestions()
-				os.Exit(0)
+				common.ClearLogChannel(common.LogResults)
+				//os.Exit(0)
 			} else {
 				fmt.Println("Start task format error, for example: start infoscan")
 			}
