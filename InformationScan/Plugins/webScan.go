@@ -26,7 +26,7 @@ import (
 
 func webScan(info *config.InfoScan) error {
 
-	// 判断是否是容器模式，如果是则传参数到另一个函数，判断请求poc容器/exp容器，或者2个都有
+	// 判断是否是容器模式，如果是则传参数到另一个函数，判断请求poc容器/exp容器
 	if config.EnableVulContainer == true {
 		if config.ScanType == "pocscan" || config.ScanType == "all" {
 			module := "pocscan"
@@ -47,6 +47,7 @@ func webScan(info *config.InfoScan) error {
 			var body []byte
 			var err error
 			body, err = json.Marshal(jsonPayload)
+			fmt.Println(string(body))
 			if err != nil {
 				fmt.Printf("Error marshaling JSON: %v\n", err)
 				return nil

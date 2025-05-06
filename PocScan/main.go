@@ -2,14 +2,19 @@ package main
 
 import (
 	"encoding/json"
+	"errors"
 	"fmt"
 	"github.com/nerowander/MultiCheck/PocScan/Modules"
 	"github.com/nerowander/MultiCheck/WebScan/lib"
 	"github.com/nerowander/MultiCheck/common"
 	"github.com/nerowander/MultiCheck/config"
+	"log"
 	"net/http"
+	"os"
+	"os/signal"
 	"strconv"
 	"sync"
+	"syscall"
 	"time"
 )
 
@@ -29,13 +34,16 @@ type PocConfig struct {
 }
 
 func scanTask(taskID string) {
-	defer taskWg.Done() // 任务完成后减少计数
-	fmt.Printf("Start pocscanning target: %s\n", info.Hosts)
+	defer func() {
+		taskWg.Done()
+		common.ClearLogChannel(common.LogResults)
+	}() // 任务完成后减少计数
+	fmt.Printf("Start pocscanning target: %s\n", info.Url)
 	startTime := time.Now()
+	config.UseContainer = true
 	lib.InitHTTP()
 	Modules.WebPocScan(&info)
 	common.GetSugestions()
-	//time.Sleep(10 * time.Second) // 模拟长时间扫描
 	result := fmt.Sprintf("PocScan complete for target: %s, time used: %s", info.Hosts, time.Since(startTime))
 	taskResults.Store(taskID, result)
 	time.AfterFunc(60*time.Second, func() {
@@ -66,7 +74,7 @@ func scanHandler(w http.ResponseWriter, r *http.Request) {
 	taskWg.Add(1) // 记录任务
 	go scanTask(taskID)
 
-	fmt.Fprintf(w, "PocScan started. Check status with task_id: %s, for example: /pocscanresult?task_id=xxx\n", taskID)
+	fmt.Fprintf(w, "PocScan started. Check status with task_id: %s, for example: /pocscanresult?task_id=%s\n", taskID, taskID)
 }
 
 func decodeJSONBody(r *http.Request) error {
@@ -107,6 +115,8 @@ func pingHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
+	shutdown := make(chan os.Signal, 1)
+	signal.Notify(shutdown, syscall.SIGTERM, syscall.SIGINT, syscall.SIGQUIT)
 	http.HandleFunc("/pocscan", scanHandler)
 	http.HandleFunc("/pocscanresult", resultHandler)
 	http.HandleFunc("/ping", pingHandler)
@@ -114,7 +124,15 @@ func main() {
 		taskWg.Wait() // 等待所有后台任务完成
 		fmt.Println("All PocScan tasks completed.")
 	}()
-
-	fmt.Println("Server started on :8080")
-	http.ListenAndServe(":8080", nil)
+	server := &http.Server{Addr: ":8080"}
+	go func() {
+		fmt.Println("Server started on :8080")
+		if err := server.ListenAndServe(); err != nil && !errors.Is(err, http.ErrServerClosed) {
+			log.Fatalf("ListenAndServe error: %v", err)
+		}
+	}()
+	_ = <-shutdown
+	fmt.Println("PocScan module exit")
+	close(common.LogResults)
+	os.Exit(0)
 }
