@@ -53,6 +53,7 @@ func webScan(info *config.InfoScan) error {
 				"pocname":    config.PocName,
 				"pocpath":    config.PocPath,
 				"cookie":     config.Cookie,
+				"webinfo":    info.WebInfo,
 			}
 			body, err = json.Marshal(jsonPayload)
 			fmt.Println(string(body))
@@ -92,6 +93,7 @@ func webScan(info *config.InfoScan) error {
 				"expname":    config.ExpName,
 				"exppath":    config.ExpPath,
 				"cookie":     config.Cookie,
+				"webinfo":    info.WebInfo,
 			}
 			body, err = json.Marshal(jsonPayload)
 			if err != nil {

@@ -25,12 +25,13 @@ var (
 )
 
 type PocConfig struct {
-	PocNum     int    `json:"pocnum"`
-	WebTimeout int64  `json:"webtimeout"`
-	PocType    string `json:"poctype"`
-	PocName    string `json:"pocname"`
-	PocPath    string `json:"pocpath"`
-	Cookie     string `json:"cookie"`
+	PocNum     int      `json:"pocnum"`
+	WebTimeout int64    `json:"webtimeout"`
+	PocType    string   `json:"poctype"`
+	PocName    string   `json:"pocname"`
+	PocPath    string   `json:"pocpath"`
+	Cookie     string   `json:"cookie"`
+	WebInfo    []string `json:"webinfo"`
 }
 
 func scanTask(taskID string) {
@@ -92,7 +93,7 @@ func decodeJSONBody(r *http.Request) error {
 	config.PocType = pocConfig.PocType
 	config.Cookie = pocConfig.Cookie
 	config.WebTimeout = pocConfig.WebTimeout
-
+	info.WebInfo = pocConfig.WebInfo
 	return nil
 }
 func resultHandler(w http.ResponseWriter, r *http.Request) {
