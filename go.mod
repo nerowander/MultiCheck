@@ -6,7 +6,7 @@ require (
 	github.com/c-bata/go-prompt v0.2.6
 	github.com/corpix/uarand v0.2.0
 	github.com/fatih/color v1.18.0
-	github.com/nerowander/MultiCheck/InformationScan v0.0.0-20250505072846-e5961bae722c
+	github.com/nerowander/MultiCheck/InformationScan v0.0.0-20250506023406-4c70588f1be3
 )
 
 require (
@@ -22,8 +22,8 @@ require (
 	github.com/mattn/go-isatty v0.0.20 // indirect
 	github.com/mattn/go-runewidth v0.0.9 // indirect
 	github.com/mattn/go-tty v0.0.3 // indirect
-	github.com/nerowander/MultiCheck/ExploitScan v0.0.0-20250505072846-e5961bae722c // indirect
-	github.com/nerowander/MultiCheck/PocScan v0.0.0-20250505072846-e5961bae722c // indirect
+	github.com/nerowander/MultiCheck/ExploitScan v0.0.0-20250506023406-4c70588f1be3 // indirect
+	github.com/nerowander/MultiCheck/PocScan v0.0.0-20250506023406-4c70588f1be3 // indirect
 	github.com/pkg/term v1.2.0-beta.2 // indirect
 	github.com/satori/go.uuid v1.2.0 // indirect
 	github.com/stacktitan/smb v0.0.0-20190531122847-da9a425dceb8 // indirect

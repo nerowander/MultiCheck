@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: pocscan
-          image: muticheck/pocscan:latest
+          image: multicheck/pocscan:latest
           # 这里指定镜像为本地镜像
           imagePullPolicy: Never
           ports:

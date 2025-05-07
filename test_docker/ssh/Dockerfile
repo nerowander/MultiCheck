@@ -1,29 +1,22 @@
-# 使用官方 Ubuntu 基础镜像
+# 使用官方 Ubuntu 镜像作为基础镜像
 FROM ubuntu:20.04
 
-# 安装 OpenSSH 服务
+# 设置环境变量，避免交互式配置
+ENV DEBIAN_FRONTEND=noninteractive
 
-#RUN apt-get update && \
-#    apt-get -y install ca-certificates && \
-#    mv /etc/apt/sources.list /etc/apt/sources_backup.list && \
-#    echo "deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal main restricted universe multiverse" >> /etc/apt/sources.list && \
-#    echo "deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-updates main restricted universe multiverse" >> /etc/apt/sources.list && \
-#    echo "deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-backports main restricted universe multiverse" >> /etc/apt/sources.list && \
-#    echo "deb http://security.ubuntu.com/ubuntu/ focal-security main restricted universe multiverse" >> /etc/apt/sources.list && \
-##    echo "deb https://mirrors.aliyun.com/ubuntu/ focal-updates main restricted universe multiverse" >> /etc/apt/sources.list && \
-##    echo "deb-src https://mirrors.aliyun.com/ubuntu/ focal-updates main restricted universe multiverse" >> /etc/apt/sources.list && \
-##    echo "# deb https://mirrors.aliyun.com/ubuntu/ focal-proposed main restricted universe multiverse" >> /etc/apt/sources.list && \
-##    echo "# deb-src https://mirrors.aliyun.com/ubuntu/ focal-proposed main restricted universe multiverse" >> /etc/apt/sources.list && \
-##    echo "deb https://mirrors.aliyun.com/ubuntu/ focal-backports main restricted universe multiverse" >> /etc/apt/sources.list && \
-##    echo "deb-src https://mirrors.aliyun.com/ubuntu/ focal-backports main restricted universe multiverse" >> /etc/apt/sources.list && \
-##    echo "deb http://archive.canonical.com/ubuntu focal partner " >> /etc/apt/sources.list && \
-#    apt-get update -y && apt-get install -y openssh-server && \
-#    echo 'root:admin123' | chpasswd && \
-#    sed -i 's/^#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config && \
-#    mkdir /var/run/sshd
+# 更新 apt 包索引并安装 openssh-server
+RUN apt-get update && \
+    apt-get install -y openssh-server sudo && \
+    rm -rf /var/lib/apt/lists/*
 
-# 暴露 SSH 端口
-EXPOSE 22
+# 设置 root 用户密码为 admin123
+RUN echo 'root:admin123' | chpasswd
 
-# 启动 SSH 服务
-#CMD ["/usr/sbin/sshd", "-D"]
+# 创建 SSH 目录
+RUN mkdir /var/run/sshd
+
+# 允许 root 登录
+RUN sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
+
+# 设置容器启动时运行 sshd 服务
+CMD ["/usr/sbin/sshd", "-D"]

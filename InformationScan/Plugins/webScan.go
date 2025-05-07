@@ -30,7 +30,7 @@ func webScan(info *config.InfoScan) error {
 	if config.EnableVulContainer == true {
 		if config.ScanType == "pocscan" || config.ScanType == "all" {
 			module := "pocscan"
-			url := fmt.Sprintf("http://%s-service/pocscan?hosts=%s&url=%s&logwaittime=%s&printlog=%s&savelogtojson=%s&savelogtohtml=%s",
+			url := fmt.Sprintf("http://%s-service:8081/pocscan?hosts=%s&url=%s&logwaittime=%s&printlog=%s&savelogtojson=%s&savelogtohtml=%s",
 				module, info.Hosts, info.Url, strconv.FormatInt(common.LogWaitTime, 10),
 				strconv.FormatBool(common.PrintLog), strconv.FormatBool(common.SaveLogToJSON),
 				strconv.FormatBool(common.SaveLogToHTML))
@@ -64,7 +64,7 @@ func webScan(info *config.InfoScan) error {
 			//return nil
 		} else if config.ScanType == "exploit" || config.ScanType == "all" {
 			module := "exploit"
-			url := fmt.Sprintf("http://%s-service/expscan?hosts=%s&url=%s&logwaittime=%s&printlog=%s&savelogtojson=%s&savelogtohtml=%s",
+			url := fmt.Sprintf("http://%s-service:8082/expscan?hosts=%s&url=%s&logwaittime=%s&printlog=%s&savelogtojson=%s&savelogtohtml=%s",
 				module, info.Hosts, info.Url, strconv.FormatInt(common.LogWaitTime, 10),
 				strconv.FormatBool(common.PrintLog), strconv.FormatBool(common.SaveLogToJSON),
 				strconv.FormatBool(common.SaveLogToHTML))

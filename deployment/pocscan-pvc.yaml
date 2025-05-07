@@ -1,10 +1,32 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"v1","kind":"PersistentVolumeClaim","metadata":{"annotations":{"pv.kubernetes.io/bind-completed":"yes","pv.kubernetes.io/bound-by-controller":"yes","volume.beta.kubernetes.io/storage-provisioner":"k8s.io/minikube-hostpath","volume.kubernetes.io/storage-provisioner":"k8s.io/minikube-hostpath"},"creationTimestamp":"2025-05-06T18:02:35Z","finalizers":["kubernetes.io/pvc-protection"],"name":"pocscan-pvc","namespace":"default","resourceVersion":"152611","uid":"74626932-2c96-40c0-a9a9-f8b744d68761"},"spec":{"accessModes":["ReadWriteMany"],"resources":{"requests":{"storage":"1Gi"}},"storageClassName":"standard","volumeMode":"Filesystem","volumeName":"pocscan-pv"},"status":{"accessModes":["ReadWriteMany"],"capacity":{"storage":"1Gi"},"phase":"Bound"}}
+    pv.kubernetes.io/bind-completed: "yes"
+    pv.kubernetes.io/bound-by-controller: "yes"
+    volume.beta.kubernetes.io/storage-provisioner: k8s.io/minikube-hostpath
+    volume.kubernetes.io/storage-provisioner: k8s.io/minikube-hostpath
+  creationTimestamp: "2025-05-06T18:08:00Z"
+  finalizers:
+  - kubernetes.io/pvc-protection
   name: pocscan-pvc
+  namespace: default
+  resourceVersion: "152895"
+  uid: 7b5a8997-23ae-4731-942c-6ec64f263b66
 spec:
   accessModes:
-    - ReadWriteMany  # 必须与 PV 配置中的 accessModes 匹配
+  - ReadWriteMany
   resources:
     requests:
       storage: 1Gi
+  storageClassName: standard
+  volumeMode: Filesystem
+  volumeName: pocscan-pv
+status:
+  accessModes:
+  - ReadWriteMany
+  capacity:
+    storage: 1Gi
+  phase: Bound
