@@ -24,45 +24,46 @@ var (
 )
 
 type ScanConfig struct {
-	Username     string   `json:"username"`
-	UsernameFile string   `json:"usernamefile"`
-	URL          string   `json:"url"`
-	URLFile      string   `json:"urlfile"`
-	HostFile     string   `json:"hostfile"`
-	Ports        string   `json:"ports"`
-	PortsFile    string   `json:"portsfile"`
-	Hash         string   `json:"hash"`
-	HashFile     string   `json:"hashfile"`
-	AddPorts     string   `json:"addports"`
-	AddUserNames string   `json:"addusernames"`
-	AddPassWords string   `json:"addpasswords"`
-	Password     string   `json:"password"`
-	PasswordFile string   `json:"passwordfile"`
-	Threads      int      `json:"threads"`
-	ScanType     string   `json:"scantype"`
-	Timeout      int64    `json:"timeout"`
-	Urls         []string `json:"urls"`
-	Command      string   `json:"command"`
-	BruteThreads int      `json:"brutethreads"`
-	Cookie       string   `json:"cookie"`
-	PocNum       int      `json:"pocnum"`
-	PocPath      string   `json:"pocpath"`
-	PocName      string   `json:"pocname"`
-	PocType      string   `json:"poctype"`
-	ExpNum       int      `json:"expnum"`
-	ExpPath      string   `json:"exppath"`
-	ExpType      string   `json:"exptype"`
-	ExpName      string   `json:"expname"`
-	WebTimeout   int64    `json:"webtimeout"`
-	NoPOC        bool     `json:"nopoc"`
-	NoExploit    bool     `json:"noexploit"`
-	DnsLog       bool     `json:"dnslog"`
-	CeyeToken    string   `json:"ceyettoken"`
-	CeyeURL      string   `json:"ceyeurl"`
-	FullPOC      bool     `json:"fullpoc"`
-	FullEXP      bool     `json:"fullexp"`
-	SaveResult   bool     `json:"saveresult"`
-	OutPutFile   string   `json:"outputfile"`
+	Username           string   `json:"username"`
+	UsernameFile       string   `json:"usernamefile"`
+	URL                string   `json:"url"`
+	URLFile            string   `json:"urlfile"`
+	HostFile           string   `json:"hostfile"`
+	Ports              string   `json:"ports"`
+	PortsFile          string   `json:"portsfile"`
+	Hash               string   `json:"hash"`
+	HashFile           string   `json:"hashfile"`
+	AddPorts           string   `json:"addports"`
+	AddUserNames       string   `json:"addusernames"`
+	AddPassWords       string   `json:"addpasswords"`
+	Password           string   `json:"password"`
+	PasswordFile       string   `json:"passwordfile"`
+	Threads            int      `json:"threads"`
+	ScanType           string   `json:"scantype"`
+	Timeout            int64    `json:"timeout"`
+	Urls               []string `json:"urls"`
+	Command            string   `json:"command"`
+	BruteThreads       int      `json:"brutethreads"`
+	Cookie             string   `json:"cookie"`
+	PocNum             int      `json:"pocnum"`
+	PocPath            string   `json:"pocpath"`
+	PocName            string   `json:"pocname"`
+	PocType            string   `json:"poctype"`
+	ExpNum             int      `json:"expnum"`
+	ExpPath            string   `json:"exppath"`
+	ExpType            string   `json:"exptype"`
+	ExpName            string   `json:"expname"`
+	WebTimeout         int64    `json:"webtimeout"`
+	NoPOC              bool     `json:"nopoc"`
+	NoExploit          bool     `json:"noexploit"`
+	DnsLog             bool     `json:"dnslog"`
+	CeyeToken          string   `json:"ceyettoken"`
+	CeyeURL            string   `json:"ceyeurl"`
+	FullPOC            bool     `json:"fullpoc"`
+	FullEXP            bool     `json:"fullexp"`
+	SaveResult         bool     `json:"saveresult"`
+	OutPutFile         string   `json:"outputfile"`
+	EnableVulContainer bool     `json:"enablevulcontainer"`
 }
 
 func scanTask(taskID string) {
@@ -190,6 +191,7 @@ func decodeJSONBody(r *http.Request) error {
 	config.FullEXP = scanConfig.FullEXP
 	config.SaveResult = scanConfig.SaveResult
 	config.OutPutFile = scanConfig.OutPutFile
+	config.EnableVulContainer = scanConfig.EnableVulContainer
 	return nil
 }
 

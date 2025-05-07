@@ -25,10 +25,20 @@ import (
 )
 
 func webScan(info *config.InfoScan) error {
-
+	var body []byte
+	var err error
+	var CheckData []WebScan.CheckDatas
 	// 判断是否是容器模式，如果是则传参数到另一个函数，判断请求poc容器/exp容器
 	if config.EnableVulContainer == true {
 		if config.ScanType == "pocscan" || config.ScanType == "all" {
+			err, CheckData = GOWebTitle(info)
+			info.WebInfo = WebScan.InfoCheck(info.Url, &CheckData)
+			//不扫描打印机
+			for _, v := range info.WebInfo {
+				if v == "打印机" {
+					return nil
+				}
+			}
 			module := "pocscan"
 			url := fmt.Sprintf("http://%s-service:8081/pocscan?hosts=%s&url=%s&logwaittime=%s&printlog=%s&savelogtojson=%s&savelogtohtml=%s",
 				module, info.Hosts, info.Url, strconv.FormatInt(common.LogWaitTime, 10),
@@ -44,8 +54,6 @@ func webScan(info *config.InfoScan) error {
 				"pocpath":    config.PocPath,
 				"cookie":     config.Cookie,
 			}
-			var body []byte
-			var err error
 			body, err = json.Marshal(jsonPayload)
 			fmt.Println(string(body))
 			if err != nil {
@@ -63,6 +71,14 @@ func webScan(info *config.InfoScan) error {
 			fmt.Println(string(resBody))
 			//return nil
 		} else if config.ScanType == "exploit" || config.ScanType == "all" {
+			err, CheckData = GOWebTitle(info)
+			info.WebInfo = WebScan.InfoCheck(info.Url, &CheckData)
+			//不扫描打印机
+			for _, v := range info.WebInfo {
+				if v == "打印机" {
+					return nil
+				}
+			}
 			module := "exploit"
 			url := fmt.Sprintf("http://%s-service:8082/expscan?hosts=%s&url=%s&logwaittime=%s&printlog=%s&savelogtojson=%s&savelogtohtml=%s",
 				module, info.Hosts, info.Url, strconv.FormatInt(common.LogWaitTime, 10),
@@ -77,8 +93,6 @@ func webScan(info *config.InfoScan) error {
 				"exppath":    config.ExpPath,
 				"cookie":     config.Cookie,
 			}
-			var body []byte
-			var err error
 			body, err = json.Marshal(jsonPayload)
 			if err != nil {
 				fmt.Printf("Error marshaling JSON: %v\n", err)
@@ -101,7 +115,7 @@ func webScan(info *config.InfoScan) error {
 		//}
 		return nil
 	} else {
-		err, CheckData := GOWebTitle(info)
+		err, CheckData = GOWebTitle(info)
 		info.WebInfo = WebScan.InfoCheck(info.Url, &CheckData)
 		//不扫描打印机
 		for _, v := range info.WebInfo {
