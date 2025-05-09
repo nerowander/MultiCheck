@@ -37,7 +37,7 @@ type PocConfig struct {
 func scanTask(taskID string) {
 	defer func() {
 		taskWg.Done()
-		common.ClearLogChannel(common.LogResults)
+		//common.ClearLogChannel(common.LogResults)
 	}() // 任务完成后减少计数
 	fmt.Printf("Start pocscanning target: %s\n", info.Url)
 	startTime := time.Now()

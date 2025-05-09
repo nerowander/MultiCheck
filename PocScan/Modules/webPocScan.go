@@ -49,6 +49,7 @@ func WebPocScan(info *config.InfoScan) {
 			// Web软件的poc由webinfo决定
 			// 若software的pocname匹配不到，则后续execute会返回所有software poc
 			pocinfo.PocName = checkInfoPoc(infoStr)
+			//fmt.Println(pocinfo)
 			executePoc(pocinfo)
 		}
 	} else if config.PocType == "iot" {
